@@ -319,8 +319,8 @@ textarea {
 }
 
 .template-option.selected {
-  border: 2px solid #007bff;
-  box-shadow: 0 0 12px #007bff44;
+  border-color: #6c63ff;
+  box-shadow: 0 0 16px rgba(108, 99, 255, 0.25);
 }
 
 .template-option .template-preview {
@@ -519,87 +519,84 @@ textarea {
 }
 
 /* -------------------------- */
-/* Мобільна адаптація */
+/* Адаптація для мобільних */
 /* -------------------------- */
 
 @media (max-width: 600px) {
   body {
     padding-top: 30px;
   }
+
   .container {
-    padding: 12px;
-    border-radius: 10px;
     max-width: 98vw;
+    padding: 12px;
     margin-top: 10px;
+    border-radius: 10px;
   }
-  .modal-content,
-  #modalPreview {
-    min-width: unset;
-    width: 98vw !important;
-    max-width: 98vw !important;
-    min-height: unset;
-    height: 90vh !important;
-    max-height: 90vh !important;
-    padding: 8px !important;
-  }
-  #modalPreview {
-    padding: 0 !important;
-    border-radius: 8px;
-    height: 60vh !important;
-  }
-  h1 {
-    font-size: 1.2em;
-    margin-bottom: 12px;
-  }
-  .template-selection {
-    flex-direction: column;
-    gap: 8px;
-    padding: 4px;
-  }
-  .template-option {
-    width: 100%;
-    min-width: unset;
-    max-width: 100%;
-    padding: 6px;
-  }
-  .template-option .template-preview {
-    height: 100px;
-    font-size: 11px;
-    padding-top: 8px;
-  }
-  button {
-    padding: 10px;
-    font-size: 1em;
-    margin-top: 12px;
-  }
-  .form-row,
-  .date-pair {
-    flex-direction: column;
-    gap: 10px;
-  }
-  input[type="text"],
-  input[type="email"],
-  textarea,
-  select {
-    font-size: 13px;
-    padding: 8px;
-  }
-  details {
-    padding: 8px;
-    border-radius: 8px;
-  }
+
   .progress-container {
     flex-direction: column;
     gap: 10px;
+    max-width: 100vw;
+    width: 100vw;
+    padding: 0 4vw;
   }
+
   .progress-line,
   .progress-fill {
     display: none;
   }
+
+  .step {
+    min-width: 0;
+    flex: none;
+    width: 100%;
+  }
+
   .form-row > div {
     flex: 1 1 100%;
   }
+
   .date-pair {
     flex-direction: column;
+  }
+
+  .modal-content {
+    min-width: unset;
+    min-height: unset;
+    width: 98vw;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  #modalPreview {
+    width: 98vw;
+    height: 60vh;
+    min-width: unset;
+    min-height: unset;
+    max-width: 98vw;
+    max-height: 70vh;
+    border-radius: 8px;
+    padding: 0;
+  }
+
+  .template-selection {
+    flex-direction: column;
+    gap: 10px;
+    padding: 6px;
+    max-width: 100vw;
+  }
+
+  .template-option {
+    width: 100%;
+    min-width: 0;
+    padding: 6px;
+  }
+
+  .template-option .template-preview {
+    height: 120px;
+    padding-top: 10px;
+    font-size: 12px;
   }
 }
