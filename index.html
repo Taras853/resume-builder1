@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Онлайн-Конструктор Резюме</title>
+  <link rel="stylesheet" href="style.css"/>
+  <!-- html2pdf.js для генерації PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+  <div class="progress-container">
+    <div class="progress-line">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="step active" data-step="0">
+      <div class="circle"><img src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="user"></div>
+      <p>Особисте</p>
+    </div>
+    <div class="step" data-step="1">
+      <div class="circle"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="resume"></div>
+      <p>Досвід</p>
+    </div>
+    <div class="step" data-step="2">
+      <div class="circle"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" alt="edit"></div>
+      <p>Шаблон</p>
+    </div>
+  </div>
+
+  <div class="container" id="step-0">
+    <h1>Особисті дані</h1>
+    <form id="resumeForm">
+      <div>
+        <label for="name">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="black" style="vertical-align:middle;margin-right:4px;">
+            <path d="M12 12c2.7 0 8 1.34 8 4v2H4v-2c0-2.66 5.3-4 8-4zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
+          </svg>
+          ПІБ
+        </label>
+        <input type="text" id="name" name="name" placeholder="Введіть ПІБ" required>
+      </div>
+      <div>
+        <label for="email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="black" style="vertical-align:middle;margin-right:4px;">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20V8.99l8 7 8-7V20H4z"/>
+          </svg>
+          Адреса електронної пошти
+        </label>
+        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+      </div>
+      <div>
+        <label for="phone">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="black" style="vertical-align:middle;margin-right:4px;">
+            <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.07 21 3 13.93 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2z"/>
+          </svg>
+          Телефон
+        </label>
+        <input type="text" id="phone" name="phone" placeholder="+380123456789" required>
+      </div>
+      <div>
+        <label for="summary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="black" style="vertical-align:middle;margin-right:4px;">
+            <path d="M3 5v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2zm2 0h14v14H5V5zm2 2v2h10V7H7zm0 4v2h7v-2H7zm0 4v2h4v-2H7z"/>
+          </svg>
+          Короткий опис про себе
+        </label>
+        <textarea id="summary" name="summary" rows="4" placeholder="Коротко опишіть себе.." required></textarea>
+      </div>
+      <div>
+        <label for="city">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="black" style="vertical-align:middle;margin-right:4px;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>
+          </svg>
+          Місто
+        </label>
+        <input type="text" id="city" name="city" placeholder="Ваше місто" required>
+      </div>
+      <button type="submit">Зберегти та продовжити</button>
+    </form>
+  </div>
+
+  <div class="container" id="step-1" style="display:none">
+    <h1>Мій досвід</h1>
+    <details open>
+      <summary>Досвід роботи</summary>
+      <div class="form-row">
+        <div>
+          <label>Посада</label>
+          <input type="text" placeholder="Введіть посаду" required>
+        </div>
+        <div>
+          <label>Місто</label>
+          <input type="text" placeholder="Місто" required>
+        </div>
+        <div>
+          <label>Роботодавець</label>
+          <input type="text" placeholder="Назва компанії" required>
+        </div>
+        <div>
+          <label>Опис</label>
+          <textarea placeholder="Опишіть обов’язки..." required></textarea>
+        </div>
+        <div class="date-pair">
+          <div>
+            <label>Дата початку</label>
+            <div class="date-group">
+              <select required>
+                <option value="">Місяць</option>
+                <option>вересень</option><option>жовтень</option><option>листопад</option><option>грудень</option>
+                <option>січень</option><option>лютий</option><option>березень</option><option>квітень</option>
+                <option>травень</option><option>червень</option><option>липень</option><option>серпень</option>
+              </select>
+              <select required>
+                <option value="">Рік</option>
+                <script>
+                  document.write([...Array(2025 - 1990 + 1)].map((_, i) => `<option>${1990 + i}</option>`).join(''));
+                </script>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label>Дата закінчення</label>
+            <div class="date-group">
+              <select required>
+                <option value="">Місяць</option>
+                <option>вересень</option><option>жовтень</option><option>листопад</option><option>грудень</option>
+                <option>січень</option><option>лютий</option><option>березень</option><option>квітень</option>
+                <option>травень</option><option>червень</option><option>липень</option><option>серпень</option>
+              </select>
+              <select required>
+                <option value="">Рік</option>
+                <script>
+                  document.write([...Array(2025 - 1990 + 1)].map((_, i) => `<option>${1990 + i}</option>`).join(''));
+                </script>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details open>
+      <summary>Освіта і кваліфікації</summary>
+      <div class="form-row">
+        <div>
+          <label>Ступінь</label>
+          <input type="text" placeholder="Бакалавр, Магістр..." required>
+        </div>
+        <div>
+          <label>Місто</label>
+          <input type="text" placeholder="Місто" required>
+        </div>
+        <div>
+          <label>Навчальний заклад</label>
+          <input type="text" placeholder="Назва ВНЗ" required>
+        </div>
+        <div>
+          <label>Опис</label>
+          <textarea placeholder="Опис освітньої програми..." required></textarea>
+        </div>
+        <div class="date-pair">
+          <div>
+            <label>Дата початку</label>
+            <div class="date-group">
+              <select required>
+                <option value="">Місяць</option>
+                <option>вересень</option><option>жовтень</option><option>листопад</option><option>грудень</option>
+                <option>січень</option><option>лютий</option><option>березень</option><option>квітень</option>
+                <option>травень</option><option>червень</option><option>липень</option><option>серпень</option>
+              </select>
+              <select required>
+                <option value="">Рік</option>
+                <script>
+                  document.write([...Array(2025 - 1990 + 1)].map((_, i) => `<option>${1990 + i}</option>`).join(''));
+                </script>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label>Дата закінчення</label>
+            <div class="date-group">
+              <select required>
+                <option value="">Місяць</option>
+                <option>вересень</option><option>жовтень</option><option>листопад</option><option>грудень</option>
+                <option>січень</option><option>лютий</option><option>березень</option><option>квітень</option>
+                <option>травень</option><option>червень</option><option>липень</option><option>серпень</option>
+              </select>
+              <select required>
+                <option value="">Рік</option>
+                <script>
+                  document.write([...Array(2025 - 1990 + 1)].map((_, i) => `<option>${1990 + i}</option>`).join(''));
+                </script>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details open>
+      <summary>Навички</summary>
+      <label for="skills">Введіть свої навички</label>
+      <textarea id="skills" placeholder="HTML, CSS, JavaScript..." rows="4" required></textarea>
+    </details>
+    <button id="nextStepExperience">Зберегти та продовжити</button>
+  </div>
+
+  <div class="container" id="step-2" style="display:none">
+    <h1>Вибір шаблону</h1>
+    <div class="template-selection" id="templateBlock">
+      <div class="template-option" data-template="template1">
+        <div class="template-preview">
+          <span style="font-size:2em;line-height:1;">🖋️</span>
+          <div style="margin-top:10px;font-size:12px;">Сучасний, синій акцент</div>
+          <div style="margin-top:8px;width:80%;height:8px;background:#007bff;border-radius:4px;"></div>
+        </div>
+        <p>Modern</p>
+      </div>
+      <div class="template-option" data-template="template2">
+        <div class="template-preview">
+          <span style="font-size:2em;line-height:1;">📜</span>
+          <div style="margin-top:10px;font-size:12px;">Класичний, золотий акцент</div>
+          <div style="margin-top:8px;width:80%;height:8px;background:#b8860b;border-radius:4px;"></div>
+        </div>
+        <p>Classic</p>
+      </div>
+      <div class="template-option" data-template="template3">
+        <div class="template-preview">
+          <span style="font-size:2em;line-height:1;">💻</span>
+          <div style="margin-top:10px;font-size:12px;">Моноширинний, сірий фон</div>
+          <div style="margin-top:8px;width:80%;height:8px;background:#222;border-radius:4px;"></div>
+        </div>
+        <p>Mono</p>
+      </div>
+    </div>
+    <button id="generateResume" type="button" style="margin-top:24px;">Згенерувати резюме</button>
+  </div>
+
+  <!-- Modal for template preview -->
+  <div id="templateModal" class="modal" style="display:none;">
+    <div class="modal-content" id="modalContent">
+      <span class="close" id="closeModal">&times;</span>
+      <div id="modalPreview"></div>
+      <button id="selectTemplateBtn">Вибрати шаблон</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
